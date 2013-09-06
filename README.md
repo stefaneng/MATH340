@@ -28,7 +28,7 @@ Office hours: Mon 1:30-2:30, Wed 1:30-2:30, and by appointment
 
 **Grading**:
 Your grade will depend on the three midterm exams, about 12 homework quizzes,
-and the nal exam.
+and the final exam.
 Each of the midterm exams is worth 35 points and the combined homework quiz scores are
 worth 35 points. But only the best three of these four scores will count toward your grade.
 For example, if your scores are 30 on Exam 1, 20 on Exam 2, 35 on Exam 3, and 25 (out

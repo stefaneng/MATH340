@@ -1,0 +1,115 @@
+%%% Lecture Notes for Math 340
+%%% Author: Stefan Eng
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm}
+\usepackage{lastpage}
+\usepackage{multicol}
+
+\newtheorem*{nota}{Notation}
+\newtheorem*{q}{Question}
+\newtheorem*{ans}{Answer}
+\newtheorem{defn}{Definition}
+\newtheorem{ex}{Example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Information for Title %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Fill this in with your own information
+
+\newcommand{\name}{
+% Enter your name here
+Stefan Eng
+}
+
+\newcommand{\classcode}{
+% Class name "code" goes here. e.g, Math320
+Math 340
+}
+
+\newcommand{\classname}{
+% Class name goes here
+Introduction to Probability
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Heading -- No need to edit %%%
+\pagestyle{fancy}
+\rhead{\name \\ \classcode}
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+%%%
+
+\begin{document}
+%%% Make the title %%%
+\begin{center}
+\textsc{\Large \classname}\\[.3cm]
+\textsc{\Large Lecture Notes - Conditional Probability}\\[.3cm]
+\textsc{\large September, 5th \& 9th 2013}
+\end{center}
+%%% End title %%%
+
+
+\section*{Intuition}
+Here we will build up some intuition for what conditional probability means.
+\begin{ex}
+Roll a ``loaded'' die\\
+\begin{tabular}{r | c c c c c c}
+      & 1   & 2  & 3   & 4   & 5   & 6 \\
+\hline
+Prob. & .05 & .2 & .15 & .25 & .05 & .3
+\end{tabular}\\[.3cm]
+
+Event \textbf{A}: Odd number is rolled.
+
+\begin{equation} \label{PofA}
+  P(A) = P(\{1,3,5\}) = P(\{1\}) + P(\{3\}) + P(\{5\}) = .05 + .15 + .05 = .25
+\end{equation}
+
+Event \textbf{B}: Roll a 3.
+
+\begin{equation} \label{PofB}
+  P(B) = P(\{3\}) = .15
+\end{equation}
+
+\begin{q}What is the probability of 3 given that the die is odd?\end{q}
+
+\begin{nota}
+  $P(B|A)$: What is the probability of B given A already occurred?
+\end{nota}
+
+Now our sample space has been restricted. The only possible options that the die could be are 1, 3 or 5. So lets make another table with the sample space restricted:
+
+\begin{tabular}{r | c c c}
+      & 1   & 3   & 5 \\
+\hline
+Prob. & .05 & .15 & .05 
+\end{tabular}\\[.3cm]
+
+This does not appear right. According to our axioms, $P(S) = 1$, (where S is the sample space) and we can see in our table that $P(S) = .2$. So how are we going to ``normalize'' the sample space? If we divide each number by the sum of the new sample space as seen below:
+
+
+\begin{align*} \label{cond}
+              P(S)                           &= 1 \\
+              P(\{1,2,3,4,5,6\}              &= 1 \\
+              P(odd) = P(\{1,3,5\})          &= 1 - P(\{2,4,6\}) \\
+              P(\{1\}) + P(\{3\}) + P(\{5\}) &= 0.25 \\
+              \frac{P(\{1\})}{0.25} + \frac{P(\{3\})}{0.25} + \frac{P(\{5\})}{0.25} &= 1
+\end{align*}
+
+\begin{ans} 
+So now it is easy to see the $P(B|A)$ or the probability of 3 given that the die is odd is: $$P(B|A) = \frac{0.15}{0.25} = 0.6$$
+\end{ans}
+
+
+\end{ex}
+\end{document}
+
+%%% End assignment %%%
+

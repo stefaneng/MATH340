@@ -1,0 +1,110 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Math homework template %%%
+%% ---------------------- %%%
+%%   Author: Stefan Eng   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Information for Title %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Fill this in with your own information
+
+\newcommand{\name}{
+% Enter your name here
+Stefan Eng
+}
+
+\newcommand{\professor}{
+% Professors name goes here
+William Watkins
+}
+
+\newcommand{\classcode}{
+% Class name "code" goes here. e.g, Math320
+Math 340
+}
+
+\newcommand{\classname}{
+% Class name goes here
+Introduction to Probability
+}
+
+\newcommand{\duedate}{
+  % Due date goes here
+9/16/13
+}
+
+\newcommand{\chSec}{
+  % Enter in chapter sections
+2.7-2.10
+}
+
+\newcommand{\problems}{
+  % Enter in the problem numbers we are working on
+77a,c,h, 95, 129, 133, 137
+}
+
+\newcommand{\assignment}{
+  % Enter assignment number
+3
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%% Heading -- No need to edit %%%
+\pagestyle{fancy}
+\rhead{\name \\ \professor \\ \classcode \\ \duedate}
+\lhead{Sections:\chSec\ \\ Problems:\problems}
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+%%% 
+
+
+
+% Good reference for math commands web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html
+
+\begin{document}
+
+%%% Make the title %%%
+\begin{center}
+  \textsc{\Large \classname}\\[.3cm]
+  \textsc{\Large Homework \assignment}
+\end{center}
+%%% End title %%%
+
+%%% Start Assignment Here %%%
+\section*{Problem 77}
+\begin{enumerate}[a)]
+\item[a)] $P(A) = \mathbf{.40}$
+\item[c)] $P(A \cap B) = \mathbf{.10}$
+\item[h)] $P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{.10}{.37} = \mathbf{\frac{10}{37}}$
+\end{enumerate}
+
+\section*{Problem 95}
+Two events A and B are such that $P(A) = .2,$ $P(B) = .3,$ and $P(A \cup B) = .4$
+\begin{enumerate}[a)]
+\item $P(A \cap B) = P(A) + P(B) - P(A \cup B) = .2 + .3 - .4 = \mathbf{.1}$
+\item $P(\overline{A} \cup \overline{B}) = P(\overline{A \cap B}) = 1 - P(A \cap B) = \mathbf{.9}$
+\item $P(\overline{A} \cap \overline{B}) = P(\overline{A \cup B}) = 1 - P(A \cup B) = \mathbf{.6}$
+\item $P(\overline{A}|B) = \frac{P(\overline{A} \cap B)}{P(B)} = \frac{P(B) - P(A \cap B)}{P(B)} = \frac{2}{3}$
+\end{enumerate}
+
+\section*{Problem 129}
+
+
+
+\end{document}
+
+%%% End assignment %%%

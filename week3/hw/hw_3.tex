@@ -1,9 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Math homework template %%%
-%% ---------------------- %%%
-%%   Author: Stefan Eng   %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%% Math 340
+%%% Homework 3
 
 \documentclass{article}
 
@@ -11,8 +7,21 @@
 \usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage{amsmath}
+\usepackage{amsmath,amsthm}
 \usepackage{enumerate}
+
+\newtheoremstyle{problem}
+{10pt}% Above space
+{10pt}% Below space
+{}%         Body font
+{}%         Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}% Thm head font
+{}%        Punctuation after thm head
+{\newline}%     Space after thm head (\newline = linebreak)
+{\thmname{#1}\thmnote{ #3}}%         Thm head spec
+
+\theoremstyle{problem}
+\newtheorem{prob}{Problem}
 
 %%% Heading -- No need to edit %%%
 \pagestyle{fancy}
@@ -43,14 +52,18 @@
 %%% End title %%%
 
 %%% Start Assignment Here %%%
-\section*{Problem 77}
-\begin{enumerate}[a)]
-\item[a)] $P(A) = \mathbf{.40}$
-\item[c)] $P(A \cap B) = \mathbf{.10}$
-\item[h)] $P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{.10}{.37} = \mathbf{\frac{10}{37}}$
-\end{enumerate}
+\begin{prob}[77a]
+$P(A) = \mathbf{.40}$
+\end{prob}
+\begin{prob}[77c]
+$P(A \cap B) = \mathbf{.10}$
+\end{prob}
+\begin{prob}[77h]
+$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{.10}{.37} = \mathbf{\frac{10}{37}}$
+\end{prob}
 
-\section*{Problem 95}
+
+\begin{prob}[95]
 Two events A and B are such that $P(A) = .2,$ $P(B) = .3,$ and $P(A \cup B) = .4$
 \begin{enumerate}[a)]
 \item $P(A \cap B) = P(A) + P(B) - P(A \cup B) = .2 + .3 - .4 = \mathbf{.1}$
@@ -58,9 +71,46 @@ Two events A and B are such that $P(A) = .2,$ $P(B) = .3,$ and $P(A \cup B) = .4
 \item $P(\overline{A} \cap \overline{B}) = P(\overline{A \cup B}) = 1 - P(A \cup B) = \mathbf{.6}$
 \item $P(\overline{A}|B) = \frac{P(\overline{A} \cap B)}{P(B)} = \frac{P(B) - P(A \cap B)}{P(B)} = \frac{2}{3}$
 \end{enumerate}
+\end{prob}
 
-\section*{Problem 129}
+\begin{prob}[129]
+Given:
+\begin{tabular}{l c r}
+$P(+|F) = .7$ & $P(+|M) = .4$ & $P(M) = .25$\\
+$P(-|F) = .3$ & $P(-|M) = .6$ & $P(F) = .75$
+\end{tabular}\\
 
+\noindent
+Using Bayes Theorem,
+\begin{align*}
+P(M|-) &= \frac{P(-|M)P(M)}{P(-|M)P(M) + P(-|F)P(F)}\\
+       &= \frac{.6 \times .25}{.6 \times .25 + .3 \times .75}\\
+       &= .4
+\end{align*}
+\end{prob}
+
+\begin{prob}[133]
+Let
+\begin{tabular}{l l}
+K = Knows the answer to the question & R = Gets the right answer \\ 
+G = Guesses the answer               & W = Gets the wrong answer
+\end{tabular}\\[.3cm]
+Then
+\begin{tabular}{c c c}
+$P(K) = .8$ & $P(R|G) = .25$ & $P(R|K) = 1$\\
+$P(G) = .2$ & $P(W|G) = .75$ & $P(W|K) = 0$
+\end{tabular}\\[.3cm]
+The probability that the student really knew the answer given that they got it correct is:
+\begin{align*}
+P(K|R) &= \frac{P(R|K)P(K)}{P(R|K)P(K) + P(R|G)P(G)}\\
+       &= \frac{.8}{.8 + .25 \times .2}\\
+       &\approx .9412
+\end{align*}
+\end{prob}
+
+\begin{prob}[137]
+
+\end{prob}
 
 
 \end{document}

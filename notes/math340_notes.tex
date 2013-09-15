@@ -1,0 +1,68 @@
+%%% Lecture Notes for Math 340
+%%% Author: Stefan Eng
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath,amsthm,amssymb}
+
+% mymacros.sty
+\usepackage{math340_macros}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{axiom}{Axiom}
+
+%%% Heading %%%
+\pagestyle{fancy}
+\rhead{Stefan Eng}
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+%%%
+
+\begin{document}
+
+% Uncomment when we want title page and table of contents
+% \input{./math340_title.tex}
+% \tableofcontents
+% \vfill
+% \pagebreak
+
+\section{Discrete Probability}
+
+\subsection{Terms}
+Some basic definitions.
+
+\subsection{Set Theory}
+Some basic set theory is needed in the study of probability.
+
+\subsection{Axioms}
+$E$ is an event. $\Omega$ is the sample space.
+\begin{axiom} \label{axiom1}
+The probability of an event is a non-negative real number
+$$
+P(E) \in \mathbb{R}, P(E) \geq 0
+$$
+\end{axiom}
+
+\begin{axiom} \label{axiom2}
+$$
+P(\Omega) = 1
+$$
+\end{axiom}
+
+\begin{axiom} \label{axiom3}
+For countable, disjoint events $E_1,E_2,\ldots$:
+$$ 
+P(E_1 \cup E_2 \cup \cdots) = \displaystyle \sum_{i=1}^{\infty} P(E_i)
+$$
+\end{axiom}
+
+\subsection{Calculating Probability}
+
+
+\end{document}
+
+%%% End assignment %%%
+

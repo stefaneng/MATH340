@@ -14,6 +14,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtheorem{axiom}{Axiom}
+\newtheorem{thm}{Theorem}[section]
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
 
 %%% Heading %%%
 \pagestyle{fancy}
@@ -40,13 +44,14 @@ Some basic set theory is needed in the study of probability.
 \subsection{Axioms}
 $E$ is an event. $\Omega$ is the sample space.
 \begin{axiom} \label{axiom1}
-The probability of an event is a non-negative real number
+The probability of an event is a non-negative real number.
 $$
 P(E) \in \mathbb{R}, P(E) \geq 0
 $$
 \end{axiom}
 
 \begin{axiom} \label{axiom2}
+Something will always happen.
 $$
 P(\Omega) = 1
 $$
@@ -59,9 +64,24 @@ P(E_1 \cup E_2 \cup \cdots) = \displaystyle \sum_{i=1}^{\infty} P(E_i)
 $$
 \end{axiom}
 
-\subsection{Calculating Probability}
+\subsection{Sample Point}
 
+\subsection{Event Composition}
 
+\subsection{Bayes' Theorem}
+\begin{defn}[Partition] \label{part}
+For some positive integer $k$, let the sets $B_1,B_2,\ldots,B_k$ be such that:
+\begin{enumerate}
+\item $S = B_1 \cup B_2 \cup \cdots B_k$.
+\item $B_i \cap B_j = \emptyset$, for $i \not = j$.
+\end{enumerate}
+\end{defn}
+\begin{thm}[Bayes' Theorem] \label{bayes}
+Assume that $\{B_1,B_2,\ldots,B_k\}$ is a \textbf{partition} of S (see definition \ref{part})
+$$
+1
+$$
+\end{thm}
 \end{document}
 
 %%% End assignment %%%

@@ -38,9 +38,8 @@
 \cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
 %%% 
 
-
-
-% Good reference for math commands web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html
+% No indent for whole page
+\setlength\parindent{0pt}
 
 \begin{document}
 
@@ -109,9 +108,32 @@ P(K|R) &= \frac{P(R|K)P(K)}{P(R|K)P(K) + P(R|G)P(G)}\\
 \end{prob}
 
 \begin{prob}[137]
+Calculating the probability of getting two white balls for any given bowl:\\[.2cm]
+\begin{tabular}{r|c c c c c}
+Bowl  & 1 & 2 & 3 & 4 & 5 \\
+\hline
+White & 1 & 2 & 3 & 4 & 5 \\
+Black & 4 & 3 & 2 & 1 & 0 \\
+\hline\\[-.2cm]
+P(2 White) & 0 & $\frac{1}{10}$ & $\frac{3}{10}$ & $\frac{3}{5}$ & 1 \\
+\end{tabular}
+\begin{enumerate}[a)]
+\item The probability that both balls are white is:
+$$
+\displaystyle \sum_{i=1}^5 \frac{P(\text{2 White in bowl i})}{5} = \frac{2}{5}
+$$
+\item Given that both balls selected are white, the probability that bowl 3 was selected:\\
+Using Bayes' Theorem,
+\begin{align*}
+P(\text{bowl 3}|\text{both white}) &= 
+\frac{P(\text{both white}|\text{bowl 3}) P(\text{bowl 3})}% Numerator
+{\displaystyle \sum_{i=1}^5 P(\text{both white}|\text{bowl i}) P(\text{bowl i})}\\
+&= \frac{\frac{3}{10}}{\frac{1}{10}+\frac{3}{10}+\frac{3}{5}+1}\\
+&= \frac{3}{20}
+\end{align*}
 
+\end{enumerate}
 \end{prob}
-
 
 \end{document}
 

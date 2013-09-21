@@ -18,14 +18,20 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\theoremstyle{plain}
 \newtheorem{axiom}{Axiom}
 \newtheorem{thm}{Theorem}[section]
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
 
-\theoremstyle{plain}
+\theoremstyle{remark}
+\newtheorem*{note}{Note}
 
+
+
+\renewcommand\qedsymbol{\ensuremath{\blacksquare}}
 %%% Heading %%%
 \pagestyle{fancy}
 \rhead{Stefan Eng}
@@ -63,7 +69,7 @@ $$
 %Some basic set theory is needed in the study of probability.
 
 \subsection{Axioms}
-$E$ is an event. $\Omega$ is the sample space.
+E is an event. $S$ is the sample space. $E \subseteq S$. To every event in $S$ we assign a probability, $P(E)$. Then following axioms hold:
 \begin{axiom} \thlabel{axiom1}
 The probability of an event is a non-negative real number.
 $$
@@ -74,7 +80,7 @@ $$
 \begin{axiom} \thlabel{axiom2}
 Something will always happen.
 $$
-P(\Omega) = 1
+P(S) = 1
 $$
 \end{axiom}
 
@@ -86,16 +92,39 @@ $$
 \end{axiom}
 
 \subsection{Sample Point}
+The \textit{sample point method} of calculating probability involves calculating all possible ways an event can happen and see what part of the total number of possible events this is.
+%\begin{enumerate}
+
+%\end{enumerate}
+\subsubsection{Tools for Sample Point}
+If we have a sample space that has $N$ points, each with equal probability of occurring, then given a event $E$ contains $n_i$ sample points, the probability of $E$ occurring is:
+$$
+P(E) = \frac{n_i}{N}
+$$
+This is the basis for how we will calculate the probability with the following ways to count sample points.
+
+\begin{thm}[$mn$ rule] \thlabel{mn}
+With $m$ elements $a_1, a_2, \ldots, a_m$ and $n$ elements $b_1, b_2, \ldots, b_n$, it is possible to form $mn = m \times n$ pairs. This is equivalent to the number of pairs in the Cartesian Product ($A \times B$).
+\end{thm}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.5]{counting_mn}
+\caption{mn rule}
+\label{mn_diagram}
+\end{figure}
+
 
 \subsection{Event Composition}
 
 \subsection{Bayes' Theorem}
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=.5]{tree_diagram}
-\caption{Tree Diagram}
-\label{tree}
-\end{figure}
+% Uncomment for tree picture
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=.5]{tree_diagram}
+%\caption{Tree Diagram}
+%\label{tree}
+%\end{figure}
 
 \begin{defn}[Partition] \thlabel{part}
 For some positive integer $k$, let the sets $B_1,B_2,\ldots,B_k$ be such that:
@@ -136,7 +165,9 @@ For some positive integer $k$, let the sets $B_1,B_2,\ldots,B_k$ be such that:
   \end{align*}
 \end{proof}
 
+\begin{note}
 The Law of Total Probability is used when $P(A|B_i)$ is easier to calculate then $P(A)$.
+\end{note}
 
 \begin{thm}[Bayes' Theorem] \thlabel{bayes}
 Assume that $\{B_1,B_2,\ldots,B_k\}$ is a \textbf{partition} of S (see \thref{part}) such that $P(B_i) > 0$, for $i = 1,2,\ldots,k$. Then

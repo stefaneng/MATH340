@@ -11,16 +11,17 @@
 \usepackage{enumerate}
 \usepackage{tikz}
 \usepackage{multicol}
+\usepackage{graphicx}
 
 \newtheoremstyle{problem}
-{10pt}% Above space
-{10pt}% Below space
+{1cm}% Above space
+{1cm}% Below space
 {}%         Body font
 {}%         Indent amount (empty = no indent, \parindent = para indent)
 {\bfseries}% Thm head font
 {\vspace{5pt}}%        Punctuation after thm head
 {\newline}%     Space after thm head (\newline = linebreak)
-{\thmname{#1}\thmnote{ #3}}%         Thm head spec
+{\thmname{#1}\thmnote{ #3}\\}%         Thm head spec
 
 \theoremstyle{problem}
 \newtheorem{prob}{Problem}
@@ -89,7 +90,24 @@
 \end{multicols}
 
 \begin{prob}[3]
-  
+\begin{multicols}{2}
+
+\begin{tabular}{r|c c c c}
+Device & 1 & 2 & 3 & 4\\
+\hline
+p(y) & 0 & $\frac{1}{6}$ & $\frac{2}{6}$ & $\frac{3}{6}$\\
+\end{tabular}
+\vfill
+\columnbreak
+  There are ${4 \choose 2} = 6$ ways to pick the components. The probability distribution Y, the number of the test on which the second defective device is found, is as shown on the left.
+\end{multicols}
+\end{prob}
+
+\begin{prob}[9]
+Assume that the company's employees make erroneous entries $5\%$ of the time.
+    \begin{figure}[h!]
+      \includegraphics[scale=.5]{hist_prob9.png}
+    \end{figure}
 \end{prob}
 \end{document}
 

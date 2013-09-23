@@ -5,10 +5,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
 \usepackage{fancyhdr}
-\usepackage{lastpage}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{graphicx}
 \usepackage{theoremref}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\hypersetup{
+  pdfborder = {0 0 0},
+  colorlinks,
+  citecolor=red,
+  linkcolor=red,
+  urlcolor=red
+}
 
 \graphicspath{{./images/}}
 
@@ -24,18 +33,21 @@
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
-\newtheorem{exmp}{Example}[section]
+\newtheorem{example}{Example}[section]
 
 \theoremstyle{remark}
 \newtheorem*{note}{Note}
+\newtheorem*{answer}{Answer}
 
 
 
 \renewcommand\qedsymbol{\ensuremath{\blacksquare}}
+\setlength\parindent{0pt}
+
 %%% Heading %%%
 \pagestyle{fancy}
 \rhead{Stefan Eng}
-\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+
 %%%
 
 \begin{document}
@@ -48,25 +60,72 @@
 
 \section{Discrete Probability}
 
-\subsection{Terms}
-Some basic definitions.
+%\subsection{Terms}
+%Some basic definitions.
+
+
+%\begin{defn}[Conditional Probability] \thlabel{cond}
+%The probability of A occurring given that B already occurred is equivalent to:
+%$$
+%P(A|B) = \frac{P(A \cap B)}{P(B)}
+%$$
+%\end{defn}
+
+%\subsection{Set Theory}
+%Some basic set theory is needed in the study of probability.
+
+\subsection{Experiment}
+The example below of an experiment will describe the various parts of an experiment.
+\begin{example}
+Assume our \textit{experiment} is rolling one die. Then our \textit{sample space} is as follows:\\
+\begin{multicols}{2}
+  \begin{tabular}{c|c}
+    Simple Events & Prob\\
+    \hline\\[-8pt]
+    1 & $\frac{1}{6}$\\[2pt]
+    2 & $\frac{1}{6}$\\[2pt]
+    3 & $\frac{1}{6}$\\[2pt]
+    4 & $\frac{1}{6}$\\[2pt]
+    5 & $\frac{1}{6}$\\[2pt]
+    6 & $\frac{1}{6}$
+  \end{tabular}
+  \vfill
+  \columnbreak
+  \underline{Other (non-simple) Events:}\\
+  A : dice is even.\\
+  $A = \{2,4,6\}$\\
+  B : dice is greater than 4.\\
+  $B = \{5,6\}$\\
+  $P(A) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6}$\\
+  $P(B) = \frac{1}{6} + \frac{1}{6}$
+\end{multicols}
+\end{example}
+\subsubsection{Terms}
+After seeing an example of what an experiment looks like, now we can see a few definitions.
+\begin{defn}[Experiment]
+The process by which an observation is made.
+\end{defn}
+
+\begin{defn}[Event]
+  Something that occurs and is observed in an experiment.
+\end{defn}
+
+\begin{defn}[Simple Event]
+  An event that cannot be decomposed. One of the possible outcomes from the experiment. 
+\end{defn}
+
+\begin{defn}[Sample Space]
+The set of all simple events in an experiment. Denoted as $S$.
+\end{defn}
+
 \begin{defn}[Mutually Exclusive] \thlabel{excl}
 Two events, A and B, are said to be \textbf{mutually exclusive} or \textbf{disjoint} given that:
 $$
 P(A \cap B) = \emptyset
 $$
+This means that A and B cannot occur at the same time.
 \end{defn}
 
-
-\begin{defn}[Conditional Probability] \thlabel{cond}
-The probability of A occurring given that B already occurred is equivalent to:
-$$
-P(A|B) = \frac{P(A \cap B)}{P(B)}
-$$
-\end{defn}
-
-%\subsection{Set Theory}
-%Some basic set theory is needed in the study of probability.
 
 \subsection{Axioms}
 E is an event. $S$ is the sample space. $E \subseteq S$. To every event in $S$ we assign a probability, $P(E)$. Then following axioms hold:
@@ -114,18 +173,317 @@ With $m$ elements $a_1, a_2, \ldots, a_m$ and $n$ elements $b_1, b_2, \ldots, b_
 \label{mn_diagram}
 \end{figure}
 
+\begin{defn}[Permutation]
+\textit{Ordered} arrangement of k objects from among n object.
+$$
+\perm{P}{n}{k} = \frac{n!}{n-k!} = n(n-1)\cdots(n-k+1)
+$$
+\end{defn}
+A permutation is very useful when we want to count a sample space where the order matters.
+\begin{example}
+  Professor Watkins has a class of 30 students. There are 10 front row seats. How many ways are there to seat 10 of the 30 in the front row?
+$$
+\perm{P}{30}{10} = \frac{30!}{20!} = 30\cdot29\cdot \ldots \cdot 21 \approx 1.09 \times 10^{14}
+$$
+\end{example}
 
-\subsection{Event Composition}
+\begin{defn}[Combination]
+\textit{Unordered} subsets of k objects from among k objects.
+$$
+{n \choose k} = \frac{n!}{k!(n-k)!} = \frac{n (n-1)\cdots (n-k+1)}{k(k-1)\cdots 2}
+$$
+Which is known as the \textit{binomial coefficient}.
+\end{defn}
+
+\begin{example}
+In Professor Watkins Math 103 class, 12 students wanted to add the class. He can only add 4 of them. How many different ways can he add the students?
+$$
+{12 \choose 4} = \frac{12!}{4!\cdot (12-4)!} = 495
+$$
+So there are 495 different ways he could choose the 4 students to add.
+\end{example}
+
+\begin{defn}[Partition]
+  If we divide a set of $n$ objects into k distinct subsets containing $n_1,n_2,\ldots,n_k$ objects respectively, such that:
+$$
+n_1 + n_2 + \ldots + n_k = n
+$$
+Then the number of ways to partition the set n into k subsets is:
+$$
+{n \choose {n_1n_2\ldots n_k}} = \frac{n!}{n_1!n_2!\ldots n_k!}
+$$
+Which is known as the \textit{multinomial coefficient}.
+\end{defn}
+\begin{example}
+In a class of 30 students there will be 4 A's, 6 B's, 18 C's, 2 D's, and 0 F's. How many ways are there to assign these grades?\\
+$$n = 30,\ k = 5$$
+$$n_1 = 4,\ n_2 = 6,\ n_3 = 18,\ n_4 = 2,\ n_5 = 0$$
+$$
+{30 \choose {4\ 6\ 18\ 2\ 0}} = \frac{30!}{4!\ 6!\ 18!\ 2!\ 0!} \approx 1.20 \times 10^{12}
+$$
+In many of these problem there is more than one way to count. We can also count this with combinations and the $mn$ rule (see \thref{mn}).
+\begin{center}
+${30 \choose 4}$ get A's
+${26 \choose 6}$ get B's\\[5pt]
+${20 \choose 18}$ get C's
+${2 \choose 2}$ get D's
+
+$$
+{30 \choose 4}
+{26 \choose 6}
+{20 \choose 18}
+{2 \choose 2} = 1.20 \time 10^{12}
+$$
+\end{center}
+\end{example}
+
+\subsubsection{Method for Sample Point}
+The can be used as a reference in how to calculate the probability with the sample point method.
+\begin{enumerate}
+  \item Define the experiment and determine how to calculate a simple event.
+  \item List (or count) the sample space of the simple events, call this $N$.
+  \item Assign probabilities to the simple events that satisfy the axioms. Normally the probability is just $\frac{1}{N}$, where $N$ is the number of simple events in the sample space.
+  \item Determine what simple events make up the event $A$ we are trying to calculate the probability for. Count or list the number of simple events that make up $A$.
+  \item Calculate $P(A)$ with $\frac{|A|}{N}$, or by summing up the probabilities of the sample points.
+\end{enumerate}
+
+\subsubsection{Sample Point Examples}
+\begin{example}
+  A boxcar contains six complex electronic systems. Two of the six are randomly selected for thorough testing and then classified as defective or not defective. 
+  \begin{enumerate}[a)]
+    \item Two of the six systems are actually defective, find the probability that both are defective.      
+    \item What is the probability that at least one of the systems selected is defective?    
+  \end{enumerate}
+  \begin{answer}[a]
+    Given that our sample space has 15 simple events, each with a probability of $\frac{1}{15}$, there is only one way to have two defective components. Therefore, 
+    $$
+    P(\text{Both defective}) = \frac{1}{15}
+    $$
+  \end{answer}
+  \begin{answer}[b]
+    One way to figure out part b is to count the cases where the system does not have any defects and subtract from $|S|$. The number of ways to pick a non-defective system is:
+$$
+{4 \choose 2} = 6
+$$
+$$
+P(\text{At least one defective}) = \frac{15-6}{15} = \frac{9}{15}
+$$
+The other way of solving is to list the sample space, and see that there are 9 cases where there is at least one defective component.
+  \end{answer}
+\end{example}
+%\begin{example}
+%There are 20 people in a building. What is the probability of one of them having the same birthday as the other? (Assume each day of the year is equally as likely to be born on)
+%\begin{answer}
+%We are going to approach this problem by counting the probability that the people are born on different days and subtract that from one. First let's start off by counting the number of different ways that the people can be born. Given that there are 365 days in the year (forget about leap year), there are 365 days the first person could be born and 365 the second could be born... we can continue this for all 20 people. So there are $N = (365)^2$ different ways the 20 people could have been born on. 
+%\end{answer}
+%\end{example}
+
+\subsection{Conditional Probability}
+Conditional Probability is best thought of intuitively, built upon the other topics we have looked at.
+\begin{example}
+  Assume we have a loaded die. The probabilities for this die are as follows:\\
+  \begin{center}
+    \begin{tabular}{r|c c c c c c}
+      & 1 & 2 & 3 & 4 & 5 & 6\\
+      \hline
+      Prob. & .05 & .20 & .15 & .25 & .05 & .30
+    \end{tabular}
+  \end{center}
+  Let event A : An odd number comes up.
+  $$
+  P(A) = P(\{1,3,5\}) = .05 + .15 + .05 = .25
+  $$
+  Let event B : 3 gets rolled.
+  $$
+  P(B) = P(\{3\}) = .15
+  $$
+  What is the probability of 3 getting rolled, given that the die is odd? Now the sample space has been restricted. We need some way to \textit{normalize} the next events in the sample space while still following the axioms. One way to think about this process is:
+\begin{align*}
+P(S) &= 1\\
+P(\{1,2,3,4,5,6\}) &= 1\\
+P(\{1,3,5\}) + P(\{2,4,6\}) &= 1\\
+P(\{1,3,5\}) &= 1 - P(\{2,4,6\})\\
+P(\{1,3,5\}) &= 1 - .75\\
+P(\{1,3,5\}) &= .25\\
+\frac{P(\{1\})}{.25} + \frac{P(\{3\})}{.25} + \frac{P(\{5\})}{.25} &= 1
+\end{align*}
+
+Now with our restricted sample space for odd numbers, we have satisfied the axioms by performing a few simple calculations. Now we have a new table of probabilities for our sample space:\\
+\begin{center}
+    \begin{tabular}{r|c c c}
+      & 1 & 3 & 5\\
+      \hline\\[-5pt]
+      Prob. & $\frac{.05}{.25}$ & $\frac{.15}{.25}$ & $\frac{.05}{.25}$
+    \end{tabular}
+\end{center}
+So clearly now we can see that the probability of B given that A happened is $.60$.
+\end{example}
+
+This example was used to show some intuition behind conditional probability. The definition of conditional probability is:
+\begin{defn}[Conditional Probability]
+For events $A$ and $B$, where $P(B) > 0$, the probability of $A$ given that $B$ occurred is:
+$$
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+$$
+\end{defn}
+
+\begin{example}
+  Roll two fair dice, one is green and the other is red.\\
+  \begin{center}
+    \begin{tabular}{r|c c c c c c}
+      & 1 & 2 & 3 & 4 & 5 & 6\\  
+      \hline
+      1 & 1-1 & & $\cdots$ & & & 1-6\\
+      2 & 2-1 & & &  & \\
+      3 &  & & $\cdots$& & \\
+      4 & $\vdots$ & & & & & $\vdots$ \\
+      5 & 5-1 & & & & & \\
+      6 & 6-1 & & $\cdots$ & & & 6-6
+    \end{tabular}
+  \end{center}
+Each of the simple events have a probability of $\frac{1}{36}$. Some other events are as follows:
+\begin{multicols}{2}
+  \begin{align*}
+    P(\text{Doubles}) &= \frac{6}{36}\\
+    P(\text{Sum is 7}) &= \frac{6}{36}\\
+    P(\text{Sum is 8}) &= \frac{5}{36}
+  \end{align*}
+  \vfill
+  \columnbreak
+  \begin{align*}
+    P(\text{Green die is one}) &= \frac{6}{36}\\[7pt]
+    P(\text{At least one die is 1} &= \frac{11}{36}
+  \end{align*}
+\end{multicols}
+Which can be verified by the table we have made. Now let's try out some conditional probability(G = Green die, R = Red die):
+$$
+P(\text{G is 1}|\text{ R is 1}) = \frac{6}{36}
+$$
+If we look back at the $P(\text{G is 1})$ we see that the result is the same! If the given event has effect on the probability of the first event we say the they are \textbf{independent}.
+$$
+P(\underbrace{1-1}_{A}|\underbrace{\text{ At least one die is 1}}_{B}) = \frac{1}{11}
+$$
+If $B$ changes the probability of $A$, then $A$ and $B$ are \textbf{dependent}.
+\end{example}
+
+%\begin{example}[Punnett Square]See the \href{http://en.wikipedia.org/wiki/Punnett_square}{Wikipedia Page} if you do not know what a Pennett Square is.
+%\begin{center}
+%R - Red dominant allele.\\
+%r - White recessive allele.\\
+%\end{center}
+%Given that we have two flowers, both with genotype Rr our Punnett Square will look like this:\\
+%\begin{center}
+%\begin{tabular}{r|c c}
+%& R & r\\
+%\hline
+%R & RR & Rr\\
+%r & Rr & rr
+%\end{tabular}
+%\end{center}
+%\end{example}
+
+\begin{defn}[Conditional Probability] \thlabel{cond}
+If we have events A and B, the probability of A given that B occurred is defined as:
+$$
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+$$
+\end{defn}
+
+\begin{defn}[Independent] \thlabel{ind}
+Two events are \textit{independent} if any one of the following hold:
+\begin{align*}
+P(A|B) &= P(A)\\
+P(B|A) &= P(B)\\
+P(A \cap B) &= P(A)P(B)
+\end{align*}
+Otherwise, the events are said to be \textit{dependent}
+\end{defn}
+
+\subsection{Laws}
+The following laws are very important for calculating the probability of events.
+\begin{thm}[Multiplicative Law of Probability] \thlabel{multi}
+The probability of the intersection of two events A and B is
+\begin{align*}
+P(A \cap B) &= P(A)P(B|A)\\
+&= P(B)P(A|B)
+\end{align*}
+If A and B are \textbf{independent} (see \thref{ind}), then
+$$
+P(A \cap B) = P(A)P(B)
+$$
+\end{thm}
+
+\begin{thm}[Additive Law of Probability] \thlabel{add}
+The probability of the union of A and B is
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+$$
+If A and B are \textbf{mutually exclusive} events (see \thref{excl}), $P(A \cap B) = 0$ and
+$$
+P(A \cup B) = P(A) + P(B)
+$$
+\end{thm}
+\begin{thm}
+If A is an event, then
+$$
+P(A) = 1 - P(\overline{A})
+$$
+\end{thm}
+\begin{proof}
+Assume $S$ is a sample space. It follows that $S = A \cup \overline{A}$. Since $A$ and $\overline{A}$ are mutually exclusive events (\thref{excl}), $P(S) = P(A) + P(\overline{A})$. Therefore, $P(A) + P(\overline{A}) = 1$.
+\end{proof}
+
+\subsubsection{Event Composition}
+Using these laws of probability we can come up with a problem solving strategy.
+\begin{enumerate}
+\item Define the experiment.
+\item Identify some of the sample points if possible.
+\item Write the event we are looking for as a composition of two or more events, using intersects, unions and/or complements.
+\item Use the Multiplicative(\thref{multi})/Additive(\thref{add}) Law of Probability
+\end{enumerate}
+
 
 \subsection{Bayes' Theorem}
-% Uncomment for tree picture
-%\begin{figure}[h!]
-%\centering
-%\includegraphics[scale=.5]{tree_diagram}
-%\caption{Tree Diagram}
-%\label{tree}
-%\end{figure}
+\subsubsection{Intuition}
+This example should give us some intuition on how Bayes' Theorem works.
+\begin{example}
+Suppose a test correctly diagnoses a disease $95\%$ of the time in people who have the disease. Also, if the person does not have the disease, it will report they do not have it $90\%$ of the time. $1\%$ of the population has the disease. If a person is chosen at random and the test indicates that she has the disease, what is the conditional probability that she actually has the disease?
 
+\begin{answer}
+First let's start by assigning symbols to the experiment. Let $D$ mean that a person has the disease and $N$ mean the person does not have the disease. Also, let $(+)$ mean the test appeared positive, and $(-)$ mean that the test appeared negative. Then,
+\begin{multicols}{3}
+\begin{align*}
+  P(+|D) &= .95\\
+  P(-|D) &= .05
+\end{align*}
+\vfill
+\columnbreak
+\begin{align*}
+P(-|N) &= .90\\
+P(+|N) &= .10
+\end{align*}
+\vfill
+\columnbreak
+\begin{align*}
+  P(D) &= .01\\
+  P(N) &= .99\\
+\end{align*}
+\vfill
+\end{multicols}
+We want to know $P(D|+)$. We want to draw a picture such as the one below. (Fill this in with our own information!)
+\end{answer}
+\end{example}
+% Uncomment for tree picture
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=.5]{tree_diagram}
+\caption{Tree Diagram}
+\label{tree}
+\end{figure}
+
+Finish off this example...
+
+\subsubsection{Formula's and Proofs}
 \begin{defn}[Partition] \thlabel{part}
 For some positive integer $k$, let the sets $B_1,B_2,\ldots,B_k$ be such that:
 \begin{enumerate}
@@ -177,10 +535,37 @@ $$
 \end{thm}
 \begin{proof}
 The proof follows from the definition of conditional probability (see \thref{cond}) and the law of total probability (see \thref{totalprob}).
-$$
-P(B_j|A) = \frac{B(A \cap B_j)}{P(A)}
-$$
+\begin{align*}
+P(B_j|A) &= \frac{P(A \cap B_j)}{P(A)}\\[5pt]
+&= \frac{P(A|B_j)P(B_j)}{\displaystyle \sum_{i = 1}^k P(A|B_i)P(B_i)}
+\end{align*}
 \end{proof}
+
+\section{Random Variables}
+\begin{defn}[Discrete Random Variable]
+A random variable $Y$ is said to be \textit{discrete} if it can assume only a finite or countably infinite number of distinct values.
+\end{defn}
+
+\begin{note}
+Random variable will be denoted as such, $(Y = y)$ is the set of all points in $S$ assigned the value $y$ by the random variable $Y$.
+\end{note}
+
+\begin{defn}
+The \textit{probability} that $Y$ takes on the value $y$, $P(Y = y)$, is defined as the sum of the probabilities of all sample points in $S$ that are assigned the value y. This can also be denoted as, $p(y)$.
+\end{defn}
+
+\begin{defn}
+The \textit{probability distribution} for a discrete random variable $Y$ can be represented by a formula, table, or a graph that provides $p(y) = P(Y = y)$ for all $y$.
+\end{defn}
+
+\begin{thm}
+For any discrete probability distribution, the following must be true:
+\begin{enumerate}
+\item $0 \leq p(y) \leq 1$ for all $y$.
+\item $\sum_{y}p(y) = 1$, where the summation is over all values of $y$ with nonzero probability.
+\end{enumerate}
+\end{thm}
+
 \end{document}
 
 %%% End assignment %%%

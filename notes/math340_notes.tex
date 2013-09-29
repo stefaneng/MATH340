@@ -541,7 +541,7 @@ P(B_j|A) &= \frac{P(A \cap B_j)}{P(A)}\\[5pt]
 \end{align*}
 \end{proof}
 
-\section{Random Variables}
+\section{Discrete Random Variables}
 \begin{defn}[Discrete Random Variable]
 A random variable $Y$ is said to be \textit{discrete} if it can assume only a finite or countably infinite number of distinct values.
 \end{defn}
@@ -565,6 +565,27 @@ For any discrete probability distribution, the following must be true:
 \item $\sum_{y}p(y) = 1$, where the summation is over all values of $y$ with nonzero probability.
 \end{enumerate}
 \end{thm}
+
+\begin{defn}[Expected Value] \thlabel{ev}
+Let $Y$ be a discrete random variable with the probability function $p(y)$. Then the \textit{expected value} of $Y$, $E(Y)$ is defined as:
+$$
+E(Y) = \displaystyle \sum_{y}y\cdot p(y)
+$$
+\end{defn}
+
+\begin{note}
+If $p(y)$ is an accurate characterization of the population frequency distribution, then $E(Y) = \mu$.
+\end{note}
+
+\begin{defn}
+If $Y$ is a random variable with mean $E(Y) = \mu$, the \textbf{variance} of a random variable $Y$ is defined to be the expected value of $(Y - \mu)^2$. That is,
+$$
+V(Y) = E[(Y - \mu)^2] = \sigma^2
+$$
+The \textbf{standard deviation} of $Y$ is the positive square root of $V(Y)$, notated as $$
+\sigma = \sqrt{V(Y)}
+$$.
+\end{defn}
 
 \end{document}
 

@@ -587,6 +587,27 @@ The \textbf{standard deviation} of $Y$ is the positive square root of $V(Y)$, no
 $$.
 \end{defn}
 
+\begin{defn}[Binomial Experiment] \thlabel{bin_exp} If we have an experiment that satisfies these conditions:
+  \begin{enumerate}
+    \item The experiment consists of a fixed number, n, of identical trials.
+    \item Each trial results in one of two outcomes: \textbf{S} for success and \textbf{F} for failure.
+    \item The probability of success is given by $P(S) = p$ and the probability of failure is given as $P(F) = q$, where $q = 1 - p$.
+    \item The trials are independent.
+    \item The random variable of interested is $Y$, the number of successes observed during $n$ trials.
+  \end{enumerate}
+  we say that an experiment is a \textbf{binomial experiment}.
+\end{defn}
+
+\begin{example}
+Insert intuition behind binomial experiment... see notes and page 102-103 of the book.
+\end{example}
+
+\begin{defn}[Binomial Distribution] \thlabel{bin_dist}
+A random variable $Y$ is said to have a \textbf{binomial distribution} based on $n$ trials with success probability $p$ if and only if:
+\begin{align*}
+p(y) = {n \choose y} p^y q^{n-y} && y = 0,1,2,\ldots ,n\text{ and }0 \leq p \leq 1.
+\end{align*}
+\end{defn}
 \end{document}
 
 %%% End assignment %%%

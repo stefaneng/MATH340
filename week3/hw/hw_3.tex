@@ -1,0 +1,140 @@
+%%% Math 340
+%%% Homework 3
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath,amsthm}
+\usepackage{enumerate}
+
+\newtheoremstyle{problem}
+{10pt}% Above space
+{10pt}% Below space
+{}%         Body font
+{}%         Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}% Thm head font
+{\vspace{5pt}}%        Punctuation after thm head
+{\newline}%     Space after thm head (\newline = linebreak)
+{\thmname{#1}\thmnote{ #3}}%         Thm head spec
+
+\theoremstyle{problem}
+\newtheorem{prob}{Problem}
+
+%%% Heading -- No need to edit %%%
+\pagestyle{fancy}
+\rhead{
+  Stefan Eng \\ 
+  William Watkins \\ 
+  Math 340 \\ 
+  9/16/13
+}
+\lhead{
+  Sections:2.7-2.10 \\ 
+  Problems: 77a,c,h, 95, 129, 133, 137
+}
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+%%% 
+
+% No indent for whole page
+\setlength\parindent{0pt}
+
+\begin{document}
+
+%%% Make the title %%%
+\begin{center}
+  \textsc{\Large Introduction to Probability}\\[.3cm]
+  \textsc{\Large Homework 3}
+\end{center}
+%%% End title %%%
+
+%%% Start Assignment Here %%%
+\begin{prob}[77a]
+$P(A) = \mathbf{.40}$
+\end{prob}
+\begin{prob}[77c]
+$P(A \cap B) = \mathbf{.10}$
+\end{prob}
+\begin{prob}[77h]
+$P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{.10}{.37} = \mathbf{\frac{10}{37}}$
+\end{prob}
+
+
+\begin{prob}[95]
+Two events A and B are such that $P(A) = .2,$ $P(B) = .3,$ and $P(A \cup B) = .4$
+\begin{enumerate}[a)]
+\item $P(A \cap B) = P(A) + P(B) - P(A \cup B) = .2 + .3 - .4 = \mathbf{.1}$
+\item $P(\overline{A} \cup \overline{B}) = P(\overline{A \cap B}) = 1 - P(A \cap B) = \mathbf{.9}$
+\item $P(\overline{A} \cap \overline{B}) = P(\overline{A \cup B}) = 1 - P(A \cup B) = \mathbf{.6}$
+\item $P(\overline{A}|B) = \frac{P(\overline{A} \cap B)}{P(B)} = \frac{P(B) - P(A \cap B)}{P(B)} = \frac{2}{3}$
+\end{enumerate}
+\end{prob}
+
+\begin{prob}[129]
+Given:
+\begin{tabular}{l c r}
+$P(+|F) = .7$ & $P(+|M) = .4$ & $P(M) = .25$\\
+$P(-|F) = .3$ & $P(-|M) = .6$ & $P(F) = .75$
+\end{tabular}\\
+
+\noindent
+Using Bayes Theorem,
+\begin{align*}
+P(M|-) &= \frac{P(-|M)P(M)}{P(-|M)P(M) + P(-|F)P(F)}\\
+       &= \frac{.6 \times .25}{.6 \times .25 + .3 \times .75}\\
+       &= .4
+\end{align*}
+\end{prob}
+
+\begin{prob}[133]
+Let
+\begin{tabular}{l l}
+K = Knows the answer to the question & R = Gets the right answer \\ 
+G = Guesses the answer               & W = Gets the wrong answer
+\end{tabular}\\[.3cm]
+Then
+\begin{tabular}{c c c}
+$P(K) = .8$ & $P(R|G) = .25$ & $P(R|K) = 1$\\
+$P(G) = .2$ & $P(W|G) = .75$ & $P(W|K) = 0$
+\end{tabular}\\[.3cm]
+The probability that the student really knew the answer given that they got it correct is:
+\begin{align*}
+P(K|R) &= \frac{P(R|K)P(K)}{P(R|K)P(K) + P(R|G)P(G)}\\
+       &= \frac{.8}{.8 + .25 \times .2}\\
+       &\approx .9412
+\end{align*}
+\end{prob}
+
+\begin{prob}[137]
+Calculating the probability of getting two white balls for any given bowl:\\[.2cm]
+\begin{tabular}{r|c c c c c}
+Bowl  & 1 & 2 & 3 & 4 & 5 \\
+\hline
+White & 1 & 2 & 3 & 4 & 5 \\
+Black & 4 & 3 & 2 & 1 & 0 \\
+\hline\\[-.2cm]
+P(2 White) & 0 & $\frac{1}{10}$ & $\frac{3}{10}$ & $\frac{3}{5}$ & 1 \\
+\end{tabular}
+\begin{enumerate}[a)]
+\item The probability that both balls are white is:
+$$
+\displaystyle \sum_{i=1}^5 \frac{P(\text{2 White in bowl i})}{5} = \frac{2}{5}
+$$
+\item Given that both balls selected are white, the probability that bowl 3 was selected:\\
+Using Bayes' Theorem,
+\begin{align*}
+P(\text{bowl 3}|\text{both white}) &= 
+\frac{P(\text{both white}|\text{bowl 3}) P(\text{bowl 3})}% Numerator
+{\displaystyle \sum_{i=1}^5 P(\text{both white}|\text{bowl i}) P(\text{bowl i})}\\
+&= \frac{\frac{3}{10}}{\frac{1}{10}+\frac{3}{10}+\frac{3}{5}+1}\\
+&= \frac{3}{20}
+\end{align*}
+
+\end{enumerate}
+\end{prob}
+
+\end{document}
+
+%%% End assignment %%%

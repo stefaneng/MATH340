@@ -1,0 +1,133 @@
+%%% Math 340
+%%% Homework 5
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath,amsthm}
+\usepackage{enumerate}
+\usepackage{listing}
+
+\newtheoremstyle{problem}
+{\topsep}% Above space
+{\topsep}% Below space
+{}%         Body font
+{}%         Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}% Thm head font
+{\vspace{5pt}}%        Punctuation after thm head
+{\newline}%     Space after thm head (\newline = linebreak)
+{\thmname{#1}\thmnote{ #3}\\}%         Thm head spec
+
+\theoremstyle{problem}
+\newtheorem{prob}{Problem}
+
+%%% Heading -- No need to edit %%%
+\pagestyle{fancy}
+\rhead{
+  Stefan Eng \\ 
+  William Watkins \\ 
+  Math 340 \\ 
+  9/30/13
+}
+\lhead{
+  Chapter 3\\
+  39, 41, 61, 67, 73
+}
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+%%% 
+
+% No indent for whole page
+\setlength\parindent{0pt}
+
+\begin{document}
+
+%%% Make the title %%%
+\begin{center}
+  \textsc{\Large Introduction to Probability}\\[.3cm]
+  \textsc{\Large Homework 5}
+\end{center}
+%%% End title %%%
+
+%%% Start Assignment Here %%%
+\begin{prob}[39]
+  Given that blah blah..
+  \begin{enumerate}[a)]
+  \item Exactly two of the four components last longer than 1000 hours
+    \begin{align*}
+      p(2) &= {4 \choose 2} (.2^2) (.8^2)\\
+      &= .1536
+    \end{align*}
+  \item The subsystem operates longer than 1000 hours
+    \begin{align*}
+      p(\text{longer than 1000 hours}) &= 1 - p(\text{less than 1000 hours})\\
+      &= 1 - p(3)\\
+      &= 1 - {4 \choose 3} (.2^3) (.8)\\
+      &= .9744
+    \end{align*}
+  \end{enumerate}
+\end{prob}
+%
+\begin{prob}[41]
+To get at least 10 questions right on the test we must have, $p(y >= 10)$. This can be represented as
+\begin{align*}
+\displaystyle \sum_{x = 10}^{15} &= {15 \choose x} \left(\frac{1}{5}\right)^x \left(\frac{4}{5}\right)^{15-x}\\
+&= .0001
+\end{align*}
+
+\end{prob}
+%
+\begin{prob}[61]
+  80\% of people donating blood have the Rhesus(Rh) factor present.
+  \begin{enumerate}[a)]
+  \item With five people selected, what is the probability that at least one does not have the Rh factor?
+    \begin{align*}
+      p(\text{at least one does not have Rh}) &= 1 - p(\text{everyone has Rh})\\
+      &= 1 - (.8)^5\\
+      &= .6723
+    \end{align*}
+  \item With five people selected, what is the probability that at most four have the Rh factor?
+    \begin{align*}
+      p(\text{at most four have the Rh factor}) = &= 1 - p(\text{everyone has Rh})\\
+      &= .6723
+    \end{align*}
+  \item Using the equation:
+    \begin{align*}
+    {n \choose 5} (.8)^5 (.2)^{n-5} &= p(y \geq 5)\\
+    &= .90
+  \end{align*}  
+  Testing each value of $n$, the first case where $p(y \geq 5) > .90$ is when there are \textbf{8} people selected.
+  \end{enumerate}
+\end{prob}
+%
+\begin{prob}[67] Finding a success on 5th try:
+  \begin{align*}
+    p(5) &= (.7)^{4}(.3)\\
+    &= .072
+  \end{align*}
+\end{prob}
+%
+\begin{prob}[73]
+  Probability of an error in the audit is \textbf{.9}
+  \begin{enumerate}[a)]
+  \item Error is found on the third company:
+    \begin{align*}
+      p(3) &= (.1)^2 (.9)\\
+      &= .009
+    \end{align*}
+  \item Error is found on or after the third audit:
+    \begin{align*}
+      p(y \geq 3) &= 1 - p(y < 3)\\
+      &= 1 - [p(1) + p(2)]\\
+      &= 1 - [.9 + (.01)(.90)]\\
+      &= 1 - .99\\
+      &= .01
+    \end{align*}
+  \end{enumerate}
+\end{prob}
+%
+\end{document}
+
+%%% End assignment %%%

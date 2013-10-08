@@ -1,0 +1,186 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5in,left=.75in,right=.75in,bottom=1in,headheight=1in]{geometry}
+\usepackage{fancyhdr}
+%\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{multirow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Information for Title %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Fill this in with your own information
+
+\newcommand{\name}{
+% Enter your name here
+Stefan Eng
+}
+
+\newcommand{\professor}{
+% Professors name goes here
+William Watkins
+}
+
+\newcommand{\classcode}{
+% Class name "code" goes here. e.g, Math320
+Math 340
+}
+
+\newcommand{\classname}{
+% Class name goes here
+Introduction to Probability
+}
+
+\newcommand{\duedate}{
+% Due date goes here
+9/4/13
+}
+
+\newcommand{\chSec}{
+% Enter in chapter sections
+2
+}
+    
+\newcommand{\problems}{
+% Enter in the problem numbers we are working on
+9, 13, 14, 17
+}
+
+\newcommand{\assignment}{
+% Enter assignment number
+1
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Heading -- No need to edit %%%
+\pagestyle{fancy}
+\rhead{\name \\ \professor \\ \classcode \\ \duedate}
+\lhead{Chapter:\chSec\ \\ Problems:\problems}
+%\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+%%%
+
+
+
+% Good reference for math commands web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html
+
+\begin{document}
+\pagenumbering{gobble}
+
+
+%%% Make the title %%%
+\begin{center}
+\textsc{\Large \classname}\\[.3cm]
+\textsc{\Large Homework \assignment}
+\end{center}
+%%% End title %%%
+
+%%% Start Assignment Here %%%
+\section*{Problem 9}
+Every person's blood type is A, B, AB, or O. In addition, each individual either has the Rhesus (Rh) factor (+) or does not (-). A medical technician records a person's blood type and Rh factor. List the sample space for this experiment.
+\begin{multicols}{2}
+
+\begin{tabular}{c | c | c | c | c}
+\ & A  & B  & AB  & O  \\
+\hline
++ & A+ & B+ & AB+ & O+ \\
+\hline
+- & A- & B- & AB- & O- \\
+\hline
+\end{tabular}
+
+\vfill
+\columnbreak
+
+The sample space is \\ $\{A+,B+,AB+,O+,A-,B-,AB-,O-\}$.
+
+\end{multicols}
+
+
+
+
+\section*{Problem 13}
+
+\begin{multicols}{2}
+\noindent
+This table represent the proportions of Americans with varying opinions of the confidence that the U.S. Air Force has withheld proof of the existence of intelligent life on other planets.
+
+\begin{tabular}{l r}
+\hline
+Opinion         & Proportion \\
+\hline
+Very Likely     & .24 \\
+Somewhat likely & .24 \\
+Unlikely        & .40 \\
+Other           & .12 \\
+\hline
+
+\end{tabular}
+
+\end{multicols}
+
+\begin{enumerate}
+\item[a)] The simple events for this experiment are, \textbf{very likely}, \textbf{somewhat likely}, \textbf{unlikely}, and \textbf{other}.
+\item[b)] The simple events are not all equally as likely. $P(Very\ Likely) = .24$, $P(Somewhat\ likely) = .24$, $P(Unlikely) = .40$ and $P(Other) = \textbf{.12}$.
+\item[c)] The probability that the person selected finds it at least somewhat likely is, $$P(Somewhat\ likely) + P(Very\ likely) = .24 + .24 = \textbf{.48}$$
+\end{enumerate}
+
+
+\section*{Problem 14}
+
+\begin{multicols}{2}
+
+    % Column one
+    \begin{tabular}{l c c}
+    \hline
+                  & \multicolumn{2}{c}{Uses Eyeglasses} \\ 
+                  & \multicolumn{2}{c}{for Reading} \\ \cline{2-3}
+    Needs glasses & Yes & No \\
+    \hline
+    Yes           & .44 & .14 \\
+    No            & .02 & .40 \\
+    \hline
+    \end{tabular}
+
+    \vfill
+    \columnbreak
+
+    % Column two
+    \begin{enumerate}
+        \item[a)] $P(needs\ glasses) = .44 + .14 =$ \textbf{.58}
+        \item[b)] $P(needs\ glasses\ but\ does\ not\ use\ them) =$ \textbf{.14}    
+        \item[c)] $P(uses\ glasses\ whether\ the\\glasses\ are\ needed\ or\ not) = .44 + .02 =$ \textbf{.46}
+    \end{enumerate}
+\end{multicols}
+
+\section*{Problem 17}
+\begin{multicols}{2}
+    % Column one
+    \begin{tabular}{l c}
+    Event                   & Probability \\
+    \hline
+    Defect in shaft only    & .08 \\
+    Defect in bushings only & .06 \\
+    Defects in both shafts & \multirow{2}{*}{.02} \\
+    and bushings & {} \\    
+    \end{tabular}
+    
+    \vfill
+    \columnbreak
+    
+    \begin{enumerate}
+        \item[a)] $P(bushing\ defect) = .06 + .02 =$ \textbf{.08}
+        \item[b)] $P(shaft\ or\ bushing\ defect) = .08 + .06 + .02 =$ \textbf{.16}
+        \item[c)] $P(exactly\ one\ of\ the\ two\ defects) = .08 + .06 =$ \textbf{.14}
+        \item[d)] $P(neither\ type\ of\ defect) =$\\$ 1 - (.08 + .06 + .02) =$ \textbf{.84}
+    \end{enumerate}
+    
+\end{multicols}
+
+\end{document}
+
+%%% End assignment %%%

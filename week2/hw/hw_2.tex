@@ -1,0 +1,162 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Math homework template %%%
+%% ---------------------- %%%
+%%   Author: Stefan Eng   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Information for Title %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Fill this in with your own information
+
+\newcommand{\name}{
+% Enter your name here
+Stefan Eng
+}
+
+\newcommand{\professor}{
+% Professors name goes here
+William Watkins
+}
+
+\newcommand{\classcode}{
+% Class name "code" goes here. e.g, Math320
+Math 340
+}
+
+\newcommand{\classname}{
+% Class name goes here
+Introduction to Probability
+}
+
+\newcommand{\duedate}{
+  % Due date goes here
+  9/9/13
+}
+
+\newcommand{\chSec}{
+  % Enter in chapter sections
+  2
+}
+
+\newcommand{\problems}{
+  % Enter in the problem numbers we are working on
+  29, 37, 55, 59, 71, 74
+}
+
+\newcommand{\assignment}{
+  % Enter assignment number
+  2
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%% Heading -- No need to edit %%%
+\pagestyle{fancy}
+\rhead{\name \\ \professor \\ \classcode \\ \duedate}
+\lhead{Chapter:\chSec\ \\ Problems:\problems}
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+%%% 
+
+
+
+% Good reference for math commands web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html
+
+\begin{document}
+
+%%% Make the title %%%
+\begin{center}
+  \textsc{\Large \classname}\\[.3cm]
+  \textsc{\Large Homework \assignment}
+\end{center}
+%%% End title %%%
+
+%%% Start Assignment Here %%%
+\section*{Problem 29}
+\begin{enumerate}[a)]
+  
+\item The experiment is randomly selecting two jurors from a group of two women and four men. A sample point is selecting one of the men and one of the women.
+  
+\item Given that we have $W_1, W_2, M_1, M_2, M_3, M_4$ the sample space is:
+  
+  %%% Sample space
+  \begin{tabular}{c c c c c c}
+    $E_1 = \{W_1, W_2\},$ & $E_6 = \{W_2, M_1\},$ & $E_{10} = \{M_1, M_2\},$ & $E_{13} = \{M_2, M_3\},$ & $E_{15} = \{M_3, M_4\}.$ \\                              
+    $E_2 = \{W_1, M_1\},$ & $E_7 = \{W_2, M_2\},$ & $E_{11} = \{M_1, M_3\},$ & $E_{14} = \{M_2, M_4\},$ & \\
+    $E_3 = \{W_1, M_2\},$ & $E_8 = \{W_2, M_3\},$ & $E_{12} = \{M_1, M_4\},$ &                       &\\        
+    $E_4 = \{W_1, M_3\},$ & $E_9 = \{W_2, M_4\},$ &                       &                       & \\
+    $E_5 = \{W_1, M_4\},$ &                       &                       &                       &
+  \end{tabular}
+  
+\item The probability that both of the jurors are women is: $P(E_1) = 1/15$
+  
+\end{enumerate}
+
+\section*{Problem 37}
+\begin{enumerate}[a)]
+\item Since order does matter, the business women can travel in $6 * 5 * 4 * 3 * 2 = 720$ ways.
+\item The woman either travels to Denver first or San Francisco first. Since we only have two outcomes the probability is $.5$.
+\end{enumerate}
+
+\section*{Problem 55}
+\begin{enumerate}[a)]
+\item Since the order the nurses getting picked does not matter, we can use combinations: $${90 \choose 10} = \frac{90!}{10!\ 80!} = 2.07 \times 10^{18}$$
+\item To get the number of times that 4 male nurses and 6 female nurses are seen in the sample points, we first need to choose 4 male nurses out of 20. Then choose 6 female nurses out of the remaining 70 nurses. The total number of combinations of nurses is given by:
+  $$P(A) = \frac{n_a}{N} = \frac{{20 \choose 4}{70 \choose 6}}{{90 \choose 10}} $$
+\end{enumerate}
+
+\section*{Problem 59}
+\begin{enumerate}[a)]
+\item There are ${52 \choose 5}$ sample points. Since there are 4 of each kind of card in the deck there is $4^5$ ways to draw the straight we want. Therefore the probability of drawing the straight we want is:
+  $$P(A) = \frac{n_a}{N} = \frac{1024}{{52 \choose 5}} = 3.94 \times 10^{-4}$$
+\item Using the result of part a, with the knowledge that there are 10 other ways to rearrange the straight, we get:
+  $$P(A) = 3.94 \times 10^{-3}$$
+\end{enumerate}
+
+\section*{Problem 71}
+Given that, $P(A) = .5, P(B) = .3 P(A \cap B) = .1$
+\begin{enumerate}[a)]
+\item $P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{.1}{.3} = \frac{1}{3}$
+\item $P(B|A) = \frac{P(B \cap A)}{P(A)} = \frac{.1}{.5} = \frac{1}{5}$
+\item \begin{align*}
+    P(A|A \cup B) &= \frac{P(A \cap (A \cup B))}{P(A \cap B)}\\[.2cm]
+    &= \frac{P(A \cup (A \cap B))}{P(A) + P(B) - P(A \cap B)}\\[.2cm]
+    &= \frac{P(A) + P(A \cap B) - P(A \cap (A \cap B))}{P(A) + P(B) - P(A \cap B)}\\[.2cm]
+    &= \frac{.5}{.5 + .3 - .1}\\[.2cm]
+    &= \frac{5}{7}
+  \end{align*}
+\item $P(A|A \cap B) = \frac{P(A \cap (A \cap B)}{P(A \cap B} = 1$
+\item \begin{align*}
+    P(A \cap B | A \cup B) &= \frac{P((A \cap B) \cap (A \cup B))}{.7}\\[.2cm]
+    &= \frac{P(A \cap B)}{.7}\\
+    &= \frac{1}{7}
+  \end{align*}
+\end{enumerate}
+
+\section*{Problem 74}
+To figure out which events are independent we must first divide each Yes/No row by its percent of the total. This will allow us to compare the Yes and No rows.
+\begin{enumerate}[a)]
+\item \textbf{A and D}: Since $\frac{.20}{.30} \not = \frac{.41}{.70}$ we see that it does matter if we selected a parent with a child in college so these events are \textbf{dependent}.
+
+\item \textbf{B and D}: Since $\frac{.09}{.30} = \frac{.21}{.70}$ we can see that a child in college does not influence the \textit{About Right} group. Therefore, B and D are \textbf{independent}.
+
+\item \textbf{C and D}: Since $\frac{.01}{.30} \not = \frac{.08}{.70}$ we see (from the same argument as a) that C and D are \textbf{dependent}.
+
+\end{enumerate}
+
+\end{document}
+
+%%% End assignment %%%

@@ -587,6 +587,7 @@ The \textbf{standard deviation} of $Y$ is the positive square root of $V(Y)$, no
 $$.
 \end{defn}
 
+\subsection{Binomial Experiment}
 \begin{defn}[Binomial Experiment] \thlabel{bin_exp} If we have an experiment that satisfies these conditions:
   \begin{enumerate}
     \item The experiment consists of a fixed number, n, of identical trials.
@@ -608,6 +609,47 @@ A random variable $Y$ is said to have a \textbf{binomial distribution} based on 
 p(y) = {n \choose y} p^y q^{n-y} && y = 0,1,2,\ldots ,n\text{ and }0 \leq p \leq 1.
 \end{align*}
 \end{defn}
+
+\subsection{Geometric Distribution}
+Similar to a binomial experiment the geometric experiment can result in one of two outcomes: success or failure. Probability of success is usually defined as $p$ and failure defined as $q$.
+\begin{defn}[Geometric Distribution]
+The geometric random variable $Y$ is the number of the trial on which the first success occurs. The experiment consists of a series of trials that concludes with the first success.
+\end{defn}
+(Insert some stuff about the sample space and intuition behind the formula)
+\begin{defn}
+  A random variable $Y$ is said to have a \textit{geometric probability distribution} if and only if
+\begin{align*}
+  p(y) = q^{y-1}p, && y = 1,2,3,\ldots , &&& 0 \leq p < 1.
+\end{align*}
+\end{defn}
+
+\subsection{Hypergeometric Probability Distribution}
+
+\begin{example}
+You draw five cards from a 52-card deck. What is the probability that you get exactly 4 hearts?
+\end{example}
+\begin{answer}
+  Sample space has $52 \choose 5$ simple events. How many of these contain 4 hearts and 1 non-heart:
+$$
+\frac{ \displaystyle {13 \choose 4} {39 \choose 1} }%
+{ \displaystyle {52 \choose 5} }
+$$
+\end{answer}
+
+%\begin{example}
+%  An urn has a total of $N$ balls. $r$ are red and $N-r$ are white. Draw $n$ balls. What's the probability of getting exactly $y$ red balls?
+%\end{example}
+
+\begin{defn}[Hypergeometric Probability Distribution]
+A random variable $Y$ is said to have a \textit{hypergeometric probability distribution} if and only if:
+$$
+p(y) = \frac{ \displaystyle {r \choose y} {N - r \choose n - y}} {\displaystyle {N \choose n}}
+$$
+Where $y$ is an integer $0,1,2,\ldots , n$ subject to the restrictions $y \leq r$ and $n - y \leq N - r$.
+\end{defn}
+
+\subsubsection{Memoryless property}
+
 \end{document}
 
 %%% End assignment %%%

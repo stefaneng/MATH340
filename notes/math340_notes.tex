@@ -650,6 +650,20 @@ Where $y$ is an integer $0,1,2,\ldots , n$ subject to the restrictions $y \leq r
 
 \subsubsection{Memoryless property}
 
+
+\section{Poisson Distribution}
+
+\section{R Distribution Functions}
+\begin{tabular}{l | l l}
+Distribution & $P(Y=y) = p(y_0)$ & $P(Y \leq y_0)$\\
+\hline
+Binomial & dbinom($y_0,n,p$) & pbinom($y_0,n,p$)\\
+Geometric & dgeo($y_0-1,p$) & pgeom($y_0-1,p$)\\
+Hypergeometric & dhyper($y_0,r,N-r,n$) & phyper($y_0,r,N-r,n$)\\
+Poisson & dpois($y_0,\lambda$) & ppois($y_0,\lambda$)\\  
+Negative Binomial & dnbinom($y_0-r,r,p$) & pnbinom($y_0-r,r,p$)
+\end{tabular}
+
 \end{document}
 
 %%% End assignment %%%

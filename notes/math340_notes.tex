@@ -567,6 +567,7 @@ For any discrete probability distribution, the following must be true:
 \end{enumerate}
 \end{thm}
 
+\subsection{Expected Value of a Random Variable}
 \begin{defn}[Expected Value] \thlabel{ev}
 Let $Y$ be a discrete random variable with the probability function $p(y)$. Then the \textit{expected value} of $Y$, $E(Y)$ is defined as:
 $$
@@ -587,6 +588,34 @@ The \textbf{standard deviation} of $Y$ is the positive square root of $V(Y)$, no
 \sigma = \sqrt{V(Y)}
 $$.
 \end{defn}
+
+\begin{thm}
+Given that $c$ is a constant:
+$$E[c] = c$$
+\end{thm}
+\begin{proof}
+  \begin{align*}
+    E[c] &= \displaystyle \sum_{y} c \cdot p(y)\\
+    &= c \displaystyle \sum_{y} p(y)\\   
+  \end{align*}
+We know that $\sum_{y} p(y) = 1$, therefore $E[c] = c$.
+\end{proof}
+
+\begin{thm}
+  Let $Y$ be a discrete random variable with probability function $p(y)$ and mean $E(Y) = \mu$. Then:
+$$
+V(Y) = \sigma^2 = E[(Y - \mu)^2] = E[Y^2] - \mu^2
+$$
+\end{thm}
+\begin{proof}
+  \begin{align*}
+    \sigma^2 &= E[(Y - \mu)^2]\\
+    &= E[Y^2 - 2\mu Y - \mu^2]\\
+    &= E[Y^2] - 2\mu E[Y] - \mu^2\\
+    &= E[Y^2] - 2 \mu ^2 - \mu^2\\
+    &= E[Y^2] - \mu ^2
+  \end{align*}
+\end{proof}
 
 \subsection{Binomial Experiment}
 \begin{defn}[Binomial Experiment] \thlabel{bin_exp} If we have an experiment that satisfies these conditions:
@@ -610,6 +639,16 @@ A random variable $Y$ is said to have a \textbf{binomial distribution} based on 
 p(y) = {n \choose y} p^y q^{n-y} && y = 0,1,2,\ldots ,n\text{ and }0 \leq p \leq 1.
 \end{align*}
 \end{defn}
+
+\begin{thm}[Expected Value and Variance] \thlabel{ev_var_bin}
+  Let $Y$ be a binomial random variable based on $n$ trials and success probability $p$. Then
+$$
+\mu = E(Y) = np \text{ and } \sigma^2 = V(Y) = npq
+$$
+\end{thm}
+\begin{proof}
+...
+\end{proof}
 
 \subsection{Geometric Distribution}
 Similar to a binomial experiment the geometric experiment can result in one of two outcomes: success or failure. Probability of success is usually defined as $p$ and failure defined as $q$.
@@ -650,7 +689,6 @@ Where $y$ is an integer $0,1,2,\ldots , n$ subject to the restrictions $y \leq r
 \end{defn}
 
 \subsubsection{Memoryless property}
-
 
 \section{Poisson Distribution}
 Suppose we are trying figure out how many cars will pass by a location in some time interval. Let's say we know the average from watching over a long period of time and we determine that it is $\lambda$, which is our expected value. We know from a binomial random variable based on $n$ trials and success probability $p$ that $E(Y) = n \cdot p$ and thus, $E(Y) = \lambda = n \cdot p$. In this case, $n$ is the number of intervals, and $p$ is the probability of a car passing. Since we have a binomial probability:
@@ -706,7 +744,105 @@ Poisson & dpois($y_0,\lambda$) & ppois($y_0,\lambda$)\\
 Negative Binomial & dnbinom($y_0-r,r,p$) & pnbinom($y_0-r,r,p$)
 \end{tabular}
 
+\section{Continuous Variables and Their Probability Distributions}
+
+\subsection{Probability Distribution for a Continuous Random Variable}
+
+\begin{defn}[Distribution Function] \thlabel{dist_func}
+  Let $Y$ denote any random variable. The \textit{distribution function} of Y is dentoed by 
+%  \begin{align*}
+  $$
+  F(y) = P(Y \leq y) \text{ for } - \infty < y < \infty
+  $$
+ % \end{align*}
+  The properties that must hold for a \textit{distribution function} are:
+  \begin{enumerate}
+    \item $F(- \infty) := \displaystyle \lim_{y \to - \infty} F(y) = 0$
+    \item $F(\infty) := \displaystyle \lim_{y \to \infty} F(y) = 1$
+    \item $F(y)$ is a non decreasing function of y. If $y_1 < y_2$ then, $F(y_1) \leq F(y_2)$.
+  \end{enumerate}
+\end{defn}
+
+\begin{defn}[Density Function] \thlabel{density}
+  Let $F(y)$ be the distribution function for a continuous random variable $Y$. Then $f(y)$, given by
+$$
+f(y) = \frac{\mathrm{d}F(y)}{\mathrm{d}y} = F^\prime (y)
+$$
+It follows that $F(y)$ can be written as
+$$
+F(y) = \displaystyle \int_{- \infty}^{y} f(t)\ \mathrm{d}t
+$$
+The properties of a \textit{density function} are:
+\begin{enumerate}
+  \item $f(y) \geq 0$ for all $y, - \infty < y < \infty$.
+  \item $\int_{- \infty}^{\infty} f(y)\ \mathrm{d}y = 1$
+\end{enumerate}
+\end{defn}
+
+
+
+\begin{example}
+$$
+  F(y) = 
+  \begin{cases}
+    0, & y < 0\\
+    \frac{1}{2}y, & 0 \leq y \leq 2\\
+    1, & y > 2
+  \end{cases}
+$$
+...
+...
+...
+\end{example}
+
+\subsection{Expected Value for Continuous Random Variables}
+\begin{defn}[Expected Value of a Continuous Random Variable] \thlabel{cont_rv}
+  The expected value of a continuous random variable $Y$ is
+  $$
+  E(Y) = \displaystyle \int_{- \infty}^{\infty} y\ f(y)\ \mathrm{d}y,
+  $$
+  provided that the integral exists.
+\end{defn}
+
+\begin{thm}
+  Let $g(Y)$ be a function of $Y$; then the expected value of $g(Y)$ is given by
+  $$
+  E[g(Y)] = \displaystyle \int_{- \infty}^{\infty} g(y) f(y) \mathrm{d}y,
+  $$
+  provided that the integral exists. This is useful in solving for the variance. ($g(Y) = Y^2$)
+\end{thm}
+
+\begin{thm}
+  Let $x$ be a constant and let $g(Y), g_1(Y), g_2(Y), \ldots, g_k(Y)$ be functions of a continuous random variable $Y$. Then the following results hold:
+  \begin{enumerate}
+    \item $E(c) = c$
+    \item $E[cg(Y)] = cE[g(Y)]$
+    \item $E[g_1(Y) +g_2(Y) + \cdots + g_k(Y)] = E[g_1(Y)] + E[g_2(Y)] + \cdots + E[g_k(Y)]$
+  \end{enumerate}
+\end{thm}
+
+\subsection{Uniform Probability Distribution}
+
+\begin{defn}
+  If $\theta_0 < \theta_1$, a random variable $Y$, is said to have a continuous \textit{uniform probability distribution} on the interval $(\theta_1,\theta_2)$ if and only if the density function of $Y$ is
+$$
+f(y) =
+\begin{cases} \thlabel{uniform}
+  \displaystyle \frac{1}{\theta_2 - \theta_1}, & \theta_1 \leq y \leq \theta_2\\
+  0, & elsewhere
+\end{cases}
+$$
+The constants that determine the specific form of a density function on called the \textit{parameters} of the density function.
+\end{defn}
+
+\begin{thm}
+  If $\theta_1 < \theta_2$ and $Y$ is a random variable uniformly distributed on the interval $(\theta_1, \theta_2)$, then
+$$
+\mu = E(Y) = \displaystyle \frac{\theta_1 + \theta_2}{2} \text{ and } \sigma^2 = V(Y) = \displaystyle \frac{(\theta_2 - \theta_1)^2}{12}
+$$
+\end{thm}
+\begin{proof}
+..
+\end{proof}
+
 \end{document}
-
-%%% End assignment %%%
-

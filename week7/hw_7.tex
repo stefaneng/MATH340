@@ -1,0 +1,129 @@
+%%% Math 340
+%%% Homework 5
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=1.5in,left=1in,right=1in,bottom=1.5in,headheight=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath,amsthm}
+\usepackage{enumerate}
+% For R code.
+\usepackage{listings}
+\lstset{language=R}
+
+\newtheoremstyle{problem}
+{\topsep}% Above space
+{\topsep}% Below space
+{}%         Body font
+{}%         Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}% Thm head font
+{\vspace{5pt}}%        Punctuation after thm head
+{\newline}%     Space after thm head (\newline = linebreak)
+{\thmname{#1}\thmnote{ #3}}%         Thm head spec
+
+\theoremstyle{problem}
+\newtheorem{prob}{Problem}
+\theoremstyle{remark}
+\newtheorem*{answer}{Answer}
+
+%%% Heading -- No need to edit %%%
+\pagestyle{fancy}
+\rhead{
+  Stefan Eng \\ 
+  William Watkins \\ 
+  Math 340 \\ 
+  10/14/13
+}
+\lhead{
+  Chapter 3\\
+  127, 131, 187, 193
+}
+\cfoot{Page\ \thepage\ of\ \pageref{LastPage}}
+%%% 
+
+% No indent for whole page
+\setlength\parindent{0pt}
+
+\begin{document}
+
+%%% Make the title %%%
+\begin{center}
+  \textsc{\Large Introduction to Probability}\\[.3cm]
+  \textsc{\Large Homework 7}
+\end{center}
+%%% End title %%%
+
+%%% Start Assignment Here %%%
+\begin{prob}[127]
+The number of typing errors made by a typist has a Poisson distribution with an average of four errors per page. If more than four errors appear on a given page, the typist must retype the whole page. What is the probability that a randomly selected page does not need to be retyped?
+\end{prob}
+\begin{answer}
+Given that $\lambda = 4$ and we want less four or less errors on the page:
+\begin{align*}
+P(Y \leq 4) &= e^{-\lambda}(1 + \lambda + \frac{\lambda^2}{2} + \frac{\lambda^3}{6} + \frac{\lambda^4}{24})\\
+&= e^{-4} (1 + 4 + \frac{4^2}{2} + \frac{4^3}{6} + \frac{4^4}{24}\\
+&= .6288
+\end{align*}
+Alternatively, using R:
+\begin{lstlisting}
+> ppois(q=4,lambda=4)
+[1] 0.6288369
+\end{lstlisting}
+\end{answer}
+% 
+
+\begin{prob}[131]
+The number of knots in a particular type of wood has a Poisson distribution with an average of 1.5 knots in 10 cubic feet of the wood. Find the probability that a 10-cubic-foot block of the wood has at most 1 knot.
+\end{prob}
+\begin{answer}
+Given that $\lambda = 1.5$ and $Y \leq 1$:
+\begin{align*}
+P(Y \leq 1) &= p(0) + p(1)\\
+&= e^{-\lambda}(1 + \lambda)\\
+&= e^{-1.5}(2.5)\\
+&= .5578
+\end{align*}
+Alternatively, using R:
+\begin{lstlisting}
+> ppois(q=1,lambda=1.5)
+[1] 0.5578254
+\end{lstlisting}
+\end{answer}
+% 
+
+\begin{prob}[187]
+Consider the following game: A player throws a fair die repeatedly until he rolls a 2, 3, 4, 5, or 6. In other words, the player continues to throw the die as long as he rolls 1s. When he rolls a ``non-1'', he stops.
+\begin{enumerate}[a)]
+\item What is the probability that the player tosses the die exactly three times?
+\item What is the expected number of rolls needed to obtain the first non-1?
+\item If he rolls a non-1 on the first throw, the player is paid \$1. Otherwise, the payoff is doubled for each 1 that the player rolls before rolling a non-1. Thus, the player is paid \$2 if he rolls a 1 followed by a non-1; \$4 if he rolls two 1s followed by a non-1; \$8 if he rolls 1s followed by a non-1; etc. In general, if we let $Y$ be the number of throws needed to obtain the first non-1, then the player rolls $(Y - 1)$ 1s before rolling his first non-1, and he is paid $2^{Y-1}$ dollars. What is the expected amount paid to the player?
+\end{enumerate}
+\begin{answer}
+\begin{enumerate}[a)]
+  \item Let a ``success'' be when a non-1 is rolled and a ``failure'' as rolling a one. Then $p = \frac{1}{6}$ and $q = \frac{5}{6}$.
+    \begin{align*}
+      p(3) &= \left(\frac{1}{6}^2 \right) \frac{5}{6}\\
+      &= .023
+    \end{align*}
+  \item Using theorem 3.8:
+    $$
+    E(Y) = \frac{1}{p} = \frac{1}{\frac{5}{6}} = 1.2
+    $$
+  \item c?
+\end{enumerate}
+\end{answer}
+\end{prob}
+%
+
+\begin{prob}[193]
+Two assembly lines I and II have the same rate of defectives in their production of voltage regulators. Five regulators are sampled from each line and tested. Among the total of ten tested regulators, four are defective. Find the probability that exactly two of the defective regulators came from line I.
+\end{prob}
+%
+\begin{answer}
+?
+\end{answer}
+\end{document}
+
+%%% End assignment %%%
